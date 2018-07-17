@@ -1,0 +1,133 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <style>
+        .page {
+            margin: 0px;
+            padding: 0px;
+            width: 100%;/* width: 7in; */
+            overflow:hidden;
+        }
+        html, body{
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+        }
+        .main-title{
+            width: 500px;
+            margin-bottom: 0;
+            font-size: 38px;
+            font-weight: 400;
+            text-align:center;
+            margin:auto;
+            color: #4C6379;
+        }
+        .align-right{
+            text-align:right;
+        }
+        table{
+            width:100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        thead {
+            display: table-header-group;
+            vertical-align: middle;
+            border-color: inherit;
+        }
+        tbody {
+            display: table-row-group;
+            vertical-align: middle;
+            border-color: inherit;
+        }
+        tbody tr {
+            border-top: 1px solid #6e858c;
+        }
+        th {
+            color: #4c6379;
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 18px 20px;
+            text-align: left;
+        }
+        table tr td{
+            color: #6e858c;
+            padding: 18px 20px;
+            font-size: 18px;
+            font-weight: 400;
+        }
+
+        .overall-sales-summary {
+            padding: 20px 0 10px 0;
+            text-align: center;
+        }
+
+        .overall-sales-summary-box {
+            display: inline-box;
+            width: 230px;
+            float: left;
+            border: 1px solid #e2e7eb;
+            padding: 30px 54px;
+            background-color: #fcfcfd;
+            color: #6e858c;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .overall-sales-summary-box div {
+            display: inline-box;
+        }
+
+        .overall-sales-summary-box-value {
+            font-size: 26px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class='page datagrid'>
+
+        <h2 class="main-title">Overall Sales</h2>
+
+        <div class="overall-sales-summary">
+            <div class="overall-sales-summary-box" style="margin-right:40px">
+                <div class="overall-sales-summary-box-title">Total Net Sales</div>
+                <div class="overall-sales-summary-box-value"><%= reportData.find((row) => row.Type == 'Net Sales').Total %></div>
+            </div>
+            <div class="overall-sales-summary-box">
+                <div class="overall-sales-summary-box-title">Total Transactions</div>
+                <div class="overall-sales-summary-box-value"><%= reportData.find((row) => row.Type == 'Gross Sales').Transactions %></div>
+            </div>
+            <div style="clear:both"><!-- --></div>
+        </div>
+
+        <table class="report-table overall-sales-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Cannabis</th>
+                    <th>Non-Cannabis</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (var i = 0; i < reportData.length; i++){ %>
+                    <tr>
+                        <td><%= reportData[i]['Type'] %></td>
+                        <% if (reportData[i]['Type'] == 'Gross Margin') { %>
+                            <td class="align-right"><%= reportData[i]['Cannabis'] %></td>
+                            <td class="align-right"><%= reportData[i]['Non-Cannabis'] %></td>
+                            <td class="align-right"><%= reportData[i]['Total'] %></td>
+                        <% } else { %>
+                            <td class="align-right"><%= reportData[i]['Cannabis'].formatCurrency() %></td>
+                            <td class="align-right"><%= reportData[i]['Non-Cannabis'].formatCurrency() %></td>
+                            <td class="align-right"><%= reportData[i]['Total'].formatCurrency() %></td>
+                        <% } %>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

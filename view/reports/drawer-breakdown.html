@@ -1,0 +1,209 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <style>
+        html, body{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        div.datagrid {
+            width: 95%;
+            margin: auto;
+        }
+
+        table{
+            width:100%;
+            border-collapse: collapse;
+        }
+
+
+        th {
+            font-weight: bold;
+            background: #ddd;
+        }
+
+        thead tr:first-child th,
+        tbody tr:last-child td,
+        tr.top-border th,
+        tr.top-border td {
+            border-top: 1px solid black;
+        }
+
+        thead tr:last-child th,
+        tbody tr:last-child td {
+            border-bottom: 1px solid black;
+        }
+
+        th.data {
+            font-weight: normal;
+        }
+        th.left-align {
+            text-align: left;
+        }
+        th.right-align {
+            text-align: right
+        }
+
+        td{
+
+        }
+
+        .total td{
+            font-weight:bold;
+        }
+    </style>
+</head>
+<body>
+    <div class='datagrid'>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Store</th>
+                <th class="data">402R-00343</th>
+
+                <th>Device</th>
+                <th class="data">CG-001A</th>
+
+                <th>Drawer Session</th>
+                <th class="data">12345</th>
+
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr class="top-border">
+                <th>Event #</th>
+                <th class="data">E1002178</th>
+
+                <th>Post date</th>
+                <th class="data">11/11/2017</th>
+
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <thead>
+            <tr>
+                <th colspan="2">Merchandise</th>
+                <th colspan="2">Non-Merchandise</th>
+                <th colspan="5">Tender</th>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <th>Amount</th>
+
+                <th>Type</th>
+                <th>Amount</th>
+
+                <th>Description</th>
+                <th>Begin amt</th>
+                <th>Trx amt</th>
+                <th>Removed</th>
+                <th>Over/Short</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td>Sales</td>
+                <td>3,459.80</td>
+
+                <td>Gift Card</td>
+                <td>0.00</td>
+
+                <td>Cash</td>
+                <td>303.60</td>
+                <td>3,459.80</td>
+                <td>3,763.60</td>
+                <td>0.20</td>
+            </tr>
+            <tr>
+                <td>Returns</td>
+                <td>0.00</td>
+
+                <td>Stored Val Cards</td>
+                <td>0.00</td>
+
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+
+                <td>Misc Charges</td>
+                <td>0.00</td>
+
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+
+                <td>Tax</td>
+                <td>0.00</td>
+
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+
+                <td>Cash drop</td>
+                <td>0.00</td>
+
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+
+                <td>Cash loan</td>
+                <td>0.00</td>
+
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Net Sales</td>
+                <td>3,459.80</td>
+
+                <td>Total</td>
+                <td>0.00</td>
+
+                <td></td>
+                <td>303.60</td>
+                <td>3,459.80</td>
+                <td>3,763.60</td>
+                <td>0.20</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</body>
+</html>

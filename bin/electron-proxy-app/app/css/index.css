@@ -1,0 +1,45 @@
+.circle{
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+}
+
+.circle.small{
+    width: 10px;
+    height: 10px;
+    margin: auto;
+}
+
+.circle.on{
+    background: green;
+}
+
+.circle.off{
+    background: red;
+}
+
+.status-line{
+    margin: auto;
+    font-weight: bold;
+}
+
+.column{
+    display: flex;
+    flex-direction: column
+}
+
+.row{
+    display: flex;
+    flex-direction: row
+}
+
+.device-table{
+    padding-top: 10px;
+    padding-bottom: 100px;
+}
+
+.device-table th,td{
+    text-align: left;
+    padding: 5px;
+}

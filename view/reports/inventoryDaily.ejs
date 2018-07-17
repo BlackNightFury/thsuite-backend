@@ -1,0 +1,101 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <style>
+        .page {
+            margin: 0px;
+            padding: 0px;
+            width: 100%;/* width: 7in; */
+            overflow:hidden;
+        }
+        html, body{
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+        }
+        .main-title{
+            width: 500px;
+            margin-bottom: 30px;
+            font-size: 40px;
+            font-weight: 400;
+            text-align:center;
+            margin:auto;
+            color: #4C6379;
+        }
+        .align-right{
+            text-align:right;
+        }
+        table{
+            width:95%;
+            border-collapse: collapse;
+        }
+        thead {
+            display: table-header-group;
+            vertical-align: middle;
+            border-color: inherit;
+        }
+        tbody {
+            display: table-row-group;
+            vertical-align: middle;
+            border-color: inherit;
+        }
+        tbody tr {
+            border-top: 1px solid #6e858c;
+        }
+        th {
+            color: #4c6379;
+            font-size: 26px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 22px 36px;
+            text-align: left;
+        }
+        table tr td{
+            color: #6e858c;
+            padding: 22px 36px;
+            font-size: 30px;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+    <div class='page datagrid'>
+
+        <h2 class="main-title">Inventory Breakdown</h2>
+        <table class="report-table overall-sales-table">
+            <thead>
+                <tr>
+                    <th>Location</th>
+                    <th >Product Name</th>
+                    <th class="align-right">Weight</th>
+                    <th >Category</th>
+                    <th >Type</th>
+                    <th class="align-right">Quantity</th>
+                    <th class="align-right">Cost per unit</th>
+                    <th class="align-right">Value per unit</th>
+                    <th class="align-right">Total value</th>
+                    <th class="align-right">Potential Profit per unit</th>
+                    <th class="align-right">Total potential profit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (var i = 0; i < data.length; i++){ %>
+                <tr>
+                    <td></td>
+                    <td><%= data[i]['name'] %></td>
+                    <td class="align-right"><%= data[i]['Quantity'] + " " + data[i]['UnitOfMeasureName'] %></td>
+                    <td ><%= data[i]['type'] %></td>
+                    <td><%= data[i]['cannabisCategory'] %></td>
+                    <td class="align-right"><%= data[i]['sold'].commify()  %></td>
+                    <td class="align-right"><%= (data[i]['wholesalePrice']/data[i]['ReceivedQuantity']).formatCurrency() %></td>
+                    <td class="align-right"><%= (data[i]['value']/data[i]['sold']).formatCurrency() %></td>
+                    <td class="align-right"><%= data[i]['value'].formatCurrency() %></td>
+                    <td class="align-right"><%= (data[i]['TotalPrice']/data[i]['sold']).formatCurrency() %></td>
+                    <td class="align-right"><%= data[i]['TotalPrice'].formatCurrency() %></td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

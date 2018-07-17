@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script>window.$ = window.jQuery = require('jquery');</script>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <title></title>
+  </head>
+  <body>
+      <div class="column">
+          <div class="row" style="margin: auto;">
+              <span class="status-line">Connection Status</span>
+              <div id="connection-status" class="circle off"></div>
+              <button id="connect">Refresh</button>
+          </div>
+          <div class="row" style="margin: auto;">
+              <div style="padding-top: 100px; display: flex; flex-direction: column">
+                  <span style="padding-left: 50px;">Printers</span>
+                  <table class="device-table" id="printer" style="padding-right: 100px;">
+                      <thead>
+                      <tr>
+                          <th>Name</th>
+                          <th>Port</th>
+                          <th>Status</th>
+                          <th></th>
+                          <th></th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      </tbody>
+                  </table>
+              </div>
+
+              <div style="padding-top: 100px; display: flex; flex-direction: column">
+                  <span style="padding-left: 150px;">Scales</span>
+                  <table class="device-table" id="scale" style="padding-left: 100px;">
+                      <thead>
+                      <tr>
+                          <th>Name</th>
+                          <th>Port</th>
+                          <th>Status</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      </tbody>
+                  </table>
+              </div>
+
+          </div>
+      </div>
+  </body>
+  <script type="text/javascript" src="js/index.js"></script>
+</html>

@@ -1,0 +1,98 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <style>
+        .page {
+            margin: 0px;
+            padding: 0px;
+            width: 100%;/* width: 7in; */
+            overflow:hidden;
+        }
+        html, body{
+            margin: 0px;
+            padding: 0px;
+            width: 100%;
+        }
+        .main-title{
+            width: 500px;
+            margin-bottom: 30px;
+            font-size: 40px;
+            font-weight: 400;
+            text-align:center;
+            margin:auto;
+            color: #4C6379;
+        }
+        .align-right{
+            text-align:right;
+        }
+        table{
+            width:95%;
+            border-collapse: collapse;
+        }
+        thead {
+            display: table-header-group;
+            vertical-align: middle;
+            border-color: inherit;
+        }
+        tbody {
+            display: table-row-group;
+            vertical-align: middle;
+            border-color: inherit;
+        }
+        tbody tr {
+            border-top: 1px solid #6e858c;
+        }
+        th {
+            color: #4c6379;
+            font-size: 26px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 22px 36px;
+            text-align: left;
+        }
+        table tr td{
+            color: #6e858c;
+            padding: 22px 36px;
+            font-size: 30px;
+            font-weight: 400;
+        }
+        .total td{
+            font-weight:bold;
+        }
+    </style>
+</head>
+<body>
+    <div class='page datagrid'>
+
+        <h2 class="main-title">Sales by Product</h2>
+
+        <table class="report-table sales-by-product-type has-total">
+            <thead>
+            <tr>
+                <th>Product Name</th>
+                <th class="align-right">Number Of Sales</th>
+                <th class="align-right">Total</th>
+                <th class="align-right">Average Per Sale</th>
+            </tr>
+            </thead>
+
+            <tbody>
+                <% for (var i = 0; i < data.length; i++){ %>
+                    <tr>
+                        <td><%= data[i]['name'] %></td>
+                        <td class="align-right"><%= data[i]['count'].commify() %></td>
+                        <td class="align-right"><%= data[i]['sum'].formatCurrency() %></td>
+                        <td class="align-right"><%= (data[i]['sum']/data[i]['count']).formatCurrency() %></td>
+                    </tr>
+                <% } %>
+                <tr class="total">
+                    <td><%= total['name'] %></td>
+                    <td class="align-right"><%= total['count'].commify() %></td>
+                    <td class="align-right"><%= total['sum'].formatCurrency() %></td>
+                    <td class="align-right"><%= (total['sum']/total['count']).formatCurrency() %></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <style>
+        html, body{
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+
+        div.datagrid {
+            width: 95%;
+            margin: auto;
+        }
+
+        table{
+            width:100%;
+            border-collapse: collapse;
+            margin-bottom: 3rem;
+        }
+
+        th,td {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        th.left-align,
+        td.left-align {
+            text-align: left;
+        }
+
+        th.right-align,
+        td.right-align {
+            text-align: right;
+        }
+
+        th {
+            font-weight: bold;
+            background: #ddd;
+        }
+
+        th.right-border,
+        td.right-border {
+            border-right: 1px solid black;
+        }
+
+        thead tr:first-child th,
+        tbody tr:last-child td,
+        tr.top-border th,
+        tr.top-border td {
+            border-top: 1px solid black;
+        }
+
+        thead tr:last-child th,
+        tbody tr:last-child td {
+            border-bottom: 1px solid black;
+        }
+
+        th.data {
+            font-weight: normal;
+        }
+
+        td{
+
+        }
+
+        .total td{
+            font-weight:bold;
+        }
+    </style>
+</head>
+<body>
+    <div class='datagrid'>
+
+        <% for(let info of drawerInfo){ %>
+
+        <table>
+            <thead>
+            <tr>
+                <th class="left-align">Store</th>
+                <th class="data"><%= info.header.store.licenseNumber %></th>
+
+                <th class="left-align">Device</th>
+                <th class="data"><%= info.header.device && info.header.device.name %></th>
+
+                <th class="left-align">Drawer Session</th>
+                <th class="data"><%= info.header.drawer && info.header.drawer.id %></th>
+
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr class="top-border">
+                <th class="left-align">User</th>
+                <th class="data"><%= info.header.user && info.header.user.firstName %> <%= info.header.user && info.header.user.lastName %></th>
+
+                <th class="left-align">Post date</th>
+                <th class="data"><%= date %></th>
+
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <thead>
+            <tr>
+                <th colspan="2" class="right-border">Merchandise</th>
+                <th colspan="2" class="right-border">Non-Merchandise</th>
+                <th colspan="5">Tender</th>
+            </tr>
+            <tr>
+                <th class="left-align">Type</th>
+                <th class="right-align right-border">Amount</th>
+
+                <th class="left-align">Type</th>
+                <th class="right-align right-border">Amount</th>
+
+                <th class="right-align">Description</th>
+                <th class="right-align">Begin amt</th>
+                <th class="right-align">Trx amt</th>
+                <th class="right-align">Removed</th>
+                <th class="right-align">Over/Short</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+                <td>Sales</td>
+                <td class="right-align right-border"><%= info.merchandise.totalSale.toFixed(2) %></td>
+
+                <td>Gift Card</td>
+                <td class="right-align right-border">0.00</td>
+
+                <td>Cash</td>
+                <td class="right-align"><%= info.header.drawer.startingAmount.toFixed(2) %></td>
+                <td class="right-align"><%= info.tender.cash.toFixed(2) %></td>
+                <td class="right-align"><%= info.header.drawer.endingAmount && info.header.drawer.endingAmount.toFixed(2) %></td>
+                <td class="right-align"><%= ((info.header.drawer.endingAmount || 0) - (info.header.drawer.startingAmount + info.tender.cash)).toFixed(2) %></td>
+            </tr>
+            <tr>
+                <td>Returns</td>
+                <td class="right-align right-border"><%= info.merchandise.returns.toFixed(2) %></td>
+
+                <td>Stored Val Cards</td>
+                <td class="right-align right-border">0.00</td>
+
+                <td>Gift Card</td>
+                <td class="right-align">0</td>
+                <td class="right-align"><%= info.tender.giftCard.toFixed(2) %></td>
+                <td class="right-align"><%= info.tender.giftCard.toFixed(2) %></td>
+                <td class="right-align">0</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="right-border"></td>
+
+                <td>Misc Charges</td>
+                <td class="right-align right-border">0.00</td>
+
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="right-border"></td>
+
+                <td>Tax</td>
+                <td class="right-align right-border">0.00</td>
+
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="right-border"></td>
+
+                <td>Cash drop</td>
+                <td class="right-align right-border">0.00</td>
+
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="right-border"></td>
+
+                <td>Cash loan</td>
+                <td class="right-align right-border">0.00</td>
+
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Net Sales</td>
+                <td class="right-align right-border"><%= (info.tender.cash + info.tender.giftCard).toFixed(2) %></td>
+
+                <td>Total</td>
+                <td class="right-align right-border">0.00</td>
+
+                <td></td>
+                <td class="right-align"><%= info.header.drawer.startingAmount.toFixed(2) %></td>
+                <td class="right-align"><%= (info.merchandise.totalSale + info.merchandise.returns).toFixed(2) %></td>
+                <td class="right-align"><%= info.header.drawer.endingAmount && info.header.drawer.endingAmount.toFixed(2) %></td>
+                <td class="right-align"><%= ((info.header.drawer.endingAmount || 0) - (info.header.drawer.startingAmount + info.tender.cash)).toFixed(2) %></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <% } %>
+
+    </div>
+</body>
+</html>
